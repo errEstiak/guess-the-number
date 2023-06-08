@@ -9,29 +9,7 @@ console.log(document.querySelector('.guess').value);
 let secretNumber = Math.trunc(Math.random() * 20)+1;
 
 let score = 20;
-let newScore;
-
-
-document.querySelector('.again').addEventListener('click', function(){
-  score = 20;
-  let highScore;
-  secretNumber = Math.trunc(Math.random() * 20)+1;
-
-  document.querySelector('.score').textContent = score;
-  document.querySelector('.number').textContent = '?';
-
-  document.querySelector('.guess').value = '';
-  document.querySelector('.message').textContent = 'Start guessing...';
-  document.querySelector('body').style.backgroundColor = '#222';
-  document.querySelector('.number').style.width = '15rem'
-
-  for(let i = 0; newScore > highScore; i++){
-    highScore = newScore;
-    document.querySelector('.highscore').textContent = highScore;
-  }
-})
-
-
+let highScore = 0;
 
 document.querySelector('.check').addEventListener('click', function(){
 
@@ -47,6 +25,11 @@ document.querySelector('.check').addEventListener('click', function(){
 
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
+
+    if(score > highScore){
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
+    }
   }
   else if(guess > secretNumber){
     if(score > 1){
@@ -69,6 +52,20 @@ document.querySelector('.check').addEventListener('click', function(){
       document.querySelector('.message').textContent = '⛔ Game Is Over';
       document.querySelector('.score').textContent = 0;
     }
-    newScore = score;
   }  
+})
+
+// TODO working on again button
+document.querySelector('.again').addEventListener('click', function(){
+  score = 20;
+  
+  secretNumber = Math.trunc(Math.random() * 20)+1;
+
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').textContent = '?';
+
+  document.querySelector('.guess').value = '';
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem'
 })
