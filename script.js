@@ -10,6 +10,7 @@ let secretNumber = Math.trunc(Math.random() * 20)+1;
 
 let score = 20
 
+
 //TODO refactoring code
 const printMessage = function(message){
   document.querySelector('.message').textContent = message;
@@ -18,7 +19,7 @@ const printMessage = function(message){
 
 // TODO adding event on check button 
 document.querySelector('.check').addEventListener('click', function(){
-
+  
   let highScore = 0;
 
   const guess = Number((document.querySelector('.guess').value));
